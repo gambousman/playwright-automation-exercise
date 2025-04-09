@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-    test.only('Logout User', async ({browser}) => {
+    test('Search Product', async ({browser}) => {
         const context = await browser.newContext()
         const page = await context.newPage()
         await page.goto('https://automationexercise.com/')
