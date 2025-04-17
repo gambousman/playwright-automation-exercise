@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+const { faker } = require('@faker-js/faker');
+
 
 test.describe('User Registration Module', () => {
 
@@ -17,16 +19,15 @@ test.describe('User Registration Module', () => {
         await page.getByRole('button', { name: 'Signup' }).click()
         await expect(page.locator('.signup-form p')).toContainText('Email Address already exist!')
 
-        await page.pause()
     })
 
-    test.only('Register User', async ({page}) => {
+    test('Register User', async ({page}) => {
         await page.goto('https://automationexercise.com/')
         await expect(page.getByRole('link', { name: 'Signup / Login' })).toBeVisible()
         await page.getByRole('link', { name: 'Signup / Login' }).click()
         await expect(page.getByRole('heading', { name: 'New User Signup!' })).toBeVisible()
         await page.getByPlaceholder('Name').fill('John Doe')
-        await page.locator('[data-qa="signup-email"]').fill('gambo@yopmail.com')
+        await page.fill('[data-qa="signup-email"]', faker.internet.email())
         await page.getByRole('button', { name: 'Signup' }).click()
         await expect(page.getByRole('heading', { name: 'Enter Account Information' })).toBeVisible()
         await page.getByRole('radio', { name: 'Mr.' }).check()
@@ -55,7 +56,7 @@ test.describe('User Registration Module', () => {
 
 
 
-        await page.pause()
+        // await page.pause()
     })
 })
 
