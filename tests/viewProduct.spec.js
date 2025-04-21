@@ -1,18 +1,14 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { ProductPage } from '../pageObjects/ProductPage.js'
 
-    test('Search Product', async ({browser}) => {
+    test('View Product', async ({browser}) => {
         const context = await browser.newContext()
         const page = await context.newPage()
         const productPage = new ProductPage(page)
         await productPage.navigateToHomePage()
         await productPage.validateHomePage()
         await productPage.navigatetoProductPage()
-        await productPage.searchProduct()
-        const productNames = await productPage.getSearchedProductNames()
-        console.log('Visible Product Names:');
-        productNames.forEach(name => console.log(name));
-
-
+        await productPage.viewProduct()
+        await productPage.validateViewedProductName()
+        
     })
-    

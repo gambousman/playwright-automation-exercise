@@ -1,4 +1,6 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
+const { faker } = require('@faker-js/faker');
+import {SubscriptionPage} from '../pageObjects/SubscriptionPage.js'
 
 test.describe('Verify Subscription', () => {
 
@@ -9,27 +11,21 @@ test.describe('Verify Subscription', () => {
     })
 
     test('Verify Subscription in Home page', async ({page}) => {
-        await page.goto('https://automationexercise.com/')
-        await expect(page.getByRole('link', { name: 'Signup / Login' })).toBeVisible()
-        await expect(page.locator('.single-widget h2')).toHaveText('Subscription')
-        await page.locator('#susbscribe_email').fill('naima1905@gmail.com')
-        await page.locator('#subscribe').click()
-        const successMessage = page.locator('.alert-success')
-        await expect(successMessage).toContainText('You have been successfully subscribed!')
-        console.log(successMessage)
+        const subscriptionPage = new SubscriptionPage(page)
+        await subscriptionPage.navigateToHomePage()
+        await subscriptionPage.NavgateToSubscriptionInHomePage()
+        await subscriptionPage.FillSubscriptionEmail(faker.internet.email())
+        await subscriptionPage.ValidateSucessfulSubscription()     
 
     })
 
     test('Verify Subscription in Cart page', async ({page}) => {
-        await page.goto('https://automationexercise.com/')
-        await expect(page.getByRole('link', { name: 'Signup / Login' })).toBeVisible()
-        await page.getByRole('link', { name: 'Cart' }).click()
-        await expect(page.locator('.single-widget h2')).toHaveText('Subscription')
-        await page.locator('#susbscribe_email').fill('naima1905@gmail.com')
-        await page.locator('#subscribe').click()
-        const successMessage = page.locator('.alert-success')
-        await expect(successMessage).toContainText('You have been successfully subscribed!')
-        console.log(successMessage)
+        const subscriptionPage = new SubscriptionPage(page)
+        await subscriptionPage.navigateToHomePage()
+        await subscriptionPage.NavigateToSubscriptionInCartPage()
+        await subscriptionPage.FillSubscriptionEmail(faker.internet.email())
+        await subscriptionPage.ValidateSucessfulSubscription()
+        
 
     })
 })
