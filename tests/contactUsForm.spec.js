@@ -1,9 +1,7 @@
 import { test } from '@playwright/test';
 import {ContactUsPage} from '../pageObjects/ContactUsPage.js'
 
-    test('Logout User', async ({browser}) => {
-        const context = await browser.newContext()
-        const page = await context.newPage()
+    test('Logout User', async ({page}) => {
         const contactUs = new ContactUsPage(page)
         await contactUs.navigateToHomePage()
         await contactUs.validateHomePage()
@@ -14,9 +12,5 @@ import {ContactUsPage} from '../pageObjects/ContactUsPage.js'
         // await contactUs.validateSuccessMessage()
         await contactUs.clickHomeLink()
         await contactUs.validateHomePage()
-        
-
-
-
 
     })

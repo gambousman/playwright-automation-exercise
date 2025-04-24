@@ -1,9 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { ProductPage } from '../pageObjects/ProductPage.js'
 
-    test('Search Product', async ({browser}) => {
-        const context = await browser.newContext()
-        const page = await context.newPage()
+    test('Search Product', async ({page}) => {
         const productPage = new ProductPage(page)
         await productPage.navigateToHomePage()
         await productPage.validateHomePage()

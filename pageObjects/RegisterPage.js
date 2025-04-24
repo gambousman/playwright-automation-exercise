@@ -38,11 +38,15 @@ class RegisterPage {
         await this.page.goto('https://automationexercise.com/');
         
       }
-    
-      async register(name, email) {
+
+      async clickSignUpLink() {
         await expect(this.verifyHomePage).toBeVisible();
         await this.signupLink.click();
         await expect(this.signupHeading).toBeVisible();
+    
+      }
+    
+      async register(name, email) {
         await this.nameInput.fill(name);
         await this.emailInput.fill(email);
         await this.signupButton.click();

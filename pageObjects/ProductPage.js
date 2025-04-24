@@ -11,11 +11,12 @@ exports.ProductPage =
             this.productName = page.locator('.product-information h2')
             this.continueShoppingButton = page.locator('.btn.btn-success.close-modal.btn-block')
             this.viewSelectedProductButton = page.locator('p a[href="/view_cart"] ')
-            this.validateProduct1 = page.locator('#product-1 a')
-            this.validateProduct2 = page.locator('#product-2 a')
+            this.validateProduct = page.getByRole('link', { name: 'Blue Top' })
             this.searchProductInput = page.getByPlaceholder('Search Product')
             this.searchButton = page.locator('#submit_search')
             this.searchProductHeading = page.locator('.title.text-center')
+            this.removeProductButton = page.locator('.cart_delete')
+            this.emptyCartMessage = page.locator('.text-center b')
 
 
 
@@ -51,14 +52,14 @@ exports.ProductPage =
             const productCount = await ProductLists.count()
             console.log(productCount)
             for (let i = 0; i < productCount; i++) {
-                const productName = ProductLists.nth(i).getByText('Blue Top').first()
+                const productName = await ProductLists.nth(i).locator('.productinfo p').getByText('Blue Top').first().textContent()
                 console.log(productName)
                 if (productName === product) {
-                    await ProductLists.nth(i).locator('.single-products .add-to-cart').first().click()
-                    // await this.page.locator('.choose > .nav > li > a').first().click()
-
+                    await ProductLists.nth(i).locator('.productinfo > .btn').first().click()
                     break
                 }
+
+                
             }
         }
         async viewProduct() {
@@ -76,7 +77,13 @@ exports.ProductPage =
         }
         async validateProductInCart() {
             await this.viewSelectedProductButton.click()
-            await expect(this.validateProduct1).toHaveText('Blue Top')
+            await expect(this.validateProduct).toHaveText('Blue Top')
             // await expect(this.validateProduct2).toHaveText('Men Tshirt')
+        }
+        async removeProductFromCart() {
+            await this.removeProductButton.click()   
+        }
+        async validateProductRemovedFromCart() {
+            await expect(this.emptyCartMessage).toHaveText('Cart is empty!')
         }
     }
