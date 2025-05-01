@@ -17,6 +17,10 @@ exports.ProductPage =
             this.searchProductHeading = page.locator('.title.text-center')
             this.removeProductButton = page.locator('.cart_delete')
             this.emptyCartMessage = page.locator('.text-center b')
+            this.cartButton = page.locator('.navbar-nav a[href="/view_cart"]')
+            this.invoiceButton = page.locator('.btn.btn-default.check_out')
+            this.confirmInvoiceDownload = page.locator('.text-center h2')
+            this.continueButton = page.locator('.btn.btn-primary')
 
 
 
@@ -34,7 +38,7 @@ exports.ProductPage =
             await expect(this.productHeading).toHaveText('All Products')
         }
         async searchProduct() {
-            await this.searchProductInput.fill('Tshirt')
+            await this.searchProductInput.fill('Blue Top')
             await this.searchButton.click()
             await expect(this.searchProductHeading).toContainText('Searched Products')
 
@@ -86,4 +90,13 @@ exports.ProductPage =
         async validateProductRemovedFromCart() {
             await expect(this.emptyCartMessage).toHaveText('Cart is empty!')
         }
+        async clickCartButton() {
+            await this.cartButton.click()
+            await expect(this.validateProduct).toHaveText('Blue Top')
+        }
+        async clickInvoiceButton() {
+            await this.invoiceButton.click()
+            
+        }
+
     }

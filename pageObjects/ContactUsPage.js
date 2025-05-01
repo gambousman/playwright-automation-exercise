@@ -47,7 +47,7 @@ class ContactUsPage {
     await this.handleDialog
   }
   async submitForm(){
-    await this.submitButton
+    await this.submitButton.click()
   }
   async validateSuccessMessage() {
     await expect(this.successMessage).toHaveText('Success! Your details have been submitted successfully.')

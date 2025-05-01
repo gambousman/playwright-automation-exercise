@@ -51,7 +51,7 @@ test('Place order: Register before checkout', async ({page}) => {
 
 
 })
-test.only('Place order: Login before checkout', async ({page}) => {
+test('Place order: Login before checkout', async ({page}) => {
     const placeOrderPage = new PlaceOrderPage(page)
     const loginPage = new LoginPage(page)
     const productPage = new ProductPage(page)
