@@ -2,7 +2,7 @@ name: playwright test
 
 on: 
 pull_request:
-  branches: main
+  branches: [main, draft]
 
 
 jobs:
