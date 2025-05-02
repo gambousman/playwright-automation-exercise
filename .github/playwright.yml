@@ -3,6 +3,8 @@ name: playwright test
 on: 
 pull_request:
   branches: [main, draft]
+  push:
+    branches: [main, draft]
 
 
 jobs:
