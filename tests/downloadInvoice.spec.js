@@ -26,6 +26,7 @@ test.describe('Place Order Module',() => {
         await placeOrderPage.validatePaymentPage()
         await placeOrderPage.fillPaymentDetails('Nana Doe', '1234567812345678', '12', '2025', '123')
         await placeOrderPage.clickPayAndConfirmOrderButton()
-        await placeOrderPage.validateOrderConfirmation()    
+        await placeOrderPage.validateOrderConfirmation()
+        await productPage.clickInvoiceButton()    
 })
 })

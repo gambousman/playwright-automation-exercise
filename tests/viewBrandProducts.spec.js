@@ -1,7 +1,7 @@
 import {BrandPage} from "../pageObjects/BrandPage.js"
 import {test} from "@playwright/test"
 
-test.only('Brand Module', async ({page}) => {
+test('Brand Module', async ({page}) => {
     const brand = new BrandPage(page)
     await brand.navigateToHomePage()
     await brand.validateBrandIsVisible()

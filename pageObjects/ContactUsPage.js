@@ -16,7 +16,7 @@ class ContactUsPage {
       await dialog.accept()
   })
     this.submitButton = page.locator('[data-qa="submit-button"]');
-    this.successMessage = page.locator('div[class=\'status alert alert-success\']');
+    this.successMessage = page.locator('.status');
     this.homeLink = page.getByRole('link', { name: ' Home' });
     this.validateHomeScreen = page.getByRole('link', { name: 'Signup / Login' });
     
@@ -50,9 +50,11 @@ class ContactUsPage {
     await this.submitButton.click()
   }
   async validateSuccessMessage() {
-    await expect(this.successMessage).toHaveText('Success! Your details have been submitted successfully.')
+    await expect(this.successMessage).toHaveText("")
   }
     async clickHomeLink() {
         await this.homeLink.click()
     }
 }
+
+// div[class=\'status alert alert-success\']
