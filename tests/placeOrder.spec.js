@@ -5,6 +5,14 @@ import { RegisterPage} from '../pageObjects/RegisterPage.js'
 import {ProductPage} from '../pageObjects/ProductPage.js'
 import { faker } from '@faker-js/faker';
 
+// let placeOrderPage
+// let productPage
+// test.beforeEach(async ({ browser }) => {
+//     const page = await browser.newPage();
+//     placeOrderPage = new PlaceOrderPage(page)
+//     productPage = new ProductPage(page)
+//   });
+
 test.describe('Place Order Module',() => {
     test('Place order: Register while checkout', async ({page}) => {
         const placeOrderPage = new PlaceOrderPage(page)

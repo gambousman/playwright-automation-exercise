@@ -4,7 +4,7 @@ import { RegisterPage} from '../pageObjects/RegisterPage.js'
 import {ProductPage} from '../pageObjects/ProductPage.js'
 import { faker } from '@faker-js/faker';
 
-test.describe('Place Order Module',() => {
+
     test('Place order: Register while checkout', async ({page}) => {
         const placeOrderPage = new PlaceOrderPage(page)
         const registerPage = new RegisterPage(page)
@@ -28,5 +28,4 @@ test.describe('Place Order Module',() => {
         await placeOrderPage.clickPayAndConfirmOrderButton()
         await placeOrderPage.validateOrderConfirmation()
         await productPage.clickInvoiceButton()    
-})
 })

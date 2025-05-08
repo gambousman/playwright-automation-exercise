@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","27","Login user with correct email and password","chromium","Thu May 08 22:07:59 WAT 2025","failed","Thu May 08 22:07:59 WAT 2025","Login Module","login.spec.js","",""
+"","35","Login user with incorrect email and password","chromium","Thu May 08 22:07:56 WAT 2025","failed","Thu May 08 22:07:57 WAT 2025","Login Module","login.spec.js","",""
+"","28","Search Product and verify product in cart after login","chromium","Thu May 08 22:07:56 WAT 2025","failed","Thu May 08 22:07:57 WAT 2025","","searchProductAndVerifyCartAfterLogin.spec.js","",""
