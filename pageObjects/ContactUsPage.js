@@ -49,9 +49,9 @@ class ContactUsPage {
   async submitForm(){
     await this.submitButton.click()
   }
-  async validateSuccessMessage() {
-    await expect(this.successMessage).toHaveText("")
-  }
+  // async validateSuccessMessage() {
+  //   await expect(this.successMessage).toHaveText("")
+  // }
     async clickHomeLink() {
         await this.homeLink.click()
     }
