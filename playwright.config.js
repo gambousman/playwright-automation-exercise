@@ -14,7 +14,9 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
-  reporter: 'html',
+  reporter: [['html'],
+             ['allure-playwright', { outputFolder: 'allure-results' }],
+            ],
   use: {
     retries: 2,
     screenshot: 'only-on-failure',
@@ -28,8 +30,10 @@ export default defineConfig({
       name: 'chromium',
       use: {
         headless: true,
-        ...devices['Desktop Chrome'] },
+        ...devices['Desktop Chrome']
+      },
     },
+
 
     // {
     //   name: 'firefox',
